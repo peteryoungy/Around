@@ -18,6 +18,8 @@ type ElasticsearchBackend struct {
 }
 
 func InitElasticsearchBackend(){
+
+    // note: like session factory, build a connection
 	client, err := elastic.NewClient(
 		elastic.SetURL(constants.ES_URL),
 		elastic.SetBasicAuth(constants.ES_USERNAME, constants.ES_PASSWORD))

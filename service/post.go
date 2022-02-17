@@ -1,13 +1,14 @@
 package service
 
 import (
-    "reflect"
+	"mime/multipart"
+	"reflect"
 
-    "around/backend"
-    "around/constants"
-    "around/model"
+	"around/backend"
+	"around/constants"
+	"around/model"
 
-    "github.com/olivere/elastic/v7"
+	"github.com/olivere/elastic/v7"
 )
 
 
@@ -57,5 +58,19 @@ func SearchPostByKeywords(keywords string) ([]model.Post, error) {
 	}
 
 	return posts, nil
+
+}
+
+
+func SavePost(post *model.Post, file multipart.File) error {
+	// use post id as the file name
+	mediaLink, err := backend.GCSBackend.SaveToGCS(file, post.Id)
+	if err != nil{
+		return err
+	}
+
+	post.Url = mediaLink
+	err = backend.ESBackend.SaveToES(post, constants.POST_INDEX, post.Id)
+	return err
 
 }
