@@ -10,6 +10,8 @@ import (
 	"around/service"
 
 	"github.com/pborman/uuid"
+
+    jwt "github.com/form3tech-oss/jwt-go"
 )
 
 var (
@@ -33,9 +35,13 @@ func uploadHandler(w http.ResponseWriter, r *http.Request) {
     // Parse from body of request to get a json object.
     fmt.Println("Received one upload request")
 
+    user := r.Context().Value("user")
+    claims := user.(*jwt.Token).Claims
+    username := claims.(jwt.MapClaims)["username"]
+
     p := model.Post{
         Id: uuid.New(),
-        User: r.FormValue("user"),
+        User: username.(string),
         Message: r.FormValue("message"),
     }
 
