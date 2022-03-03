@@ -3,13 +3,21 @@ package handler
 import (
     "net/http" 
 
-    "github.com/gorilla/mux"   
-
+    "github.com/gorilla/mux"  
+	 
+	
     jwtmiddleware "github.com/auth0/go-jwt-middleware"
     jwt "github.com/form3tech-oss/jwt-go"
+
+	"github.com/gorilla/handlers"
+	"around/util"
 )
 
-func InitRouter() *mux.Router {
+var mySigningKey []byte
+
+func InitRouter(config *util.TokenInfo) http.Handler {
+	
+	mySigningKey = []byte(config.Secret)
 
     jwtMiddleware := jwtmiddleware.New(jwtmiddleware.Options{
         ValidationKeyGetter: func(token *jwt.Token) (interface{}, error) {
@@ -26,5 +34,10 @@ func InitRouter() *mux.Router {
     router.Handle("/signup", http.HandlerFunc(signupHandler)).Methods("POST")
     router.Handle("/signin", http.HandlerFunc(signinHandler)).Methods("POST")
 
-    return router
+	originsOk := handlers.AllowedOrigins([]string{"*"})
+    headersOk := handlers.AllowedHeaders([]string{"Authorization", "Content-Type"})
+    methodsOk := handlers.AllowedMethods([]string{"GET", "POST", "DELETE"})
+
+    // return router
+	return handlers.CORS(originsOk, headersOk, methodsOk)(router)
 }
