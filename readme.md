@@ -6,7 +6,7 @@ This project is a social network web application developed with React and Go. It
 
 ## Demo
 
-Visit our website via this [link](https://master.d23pia6jygdo3l.amplifyapp.com/). 
+Visit our website via this [link](https://master.dbyuaqemqqu9m.amplifyapp.com/). 
 
 ## Prerequsites
 
@@ -26,7 +26,7 @@ $ git clone git@github.com:peteryoungy/Mars.git
 $ cd Mars
 ```
 
-2. Run Elasticsearch, and then add your Elasticsearch endpoint in the code.
+2. Run Elasticsearch, then add your Elasticsearch endpoint in the code.
 
 3. Run the backend service.
 
@@ -75,7 +75,7 @@ Users would like to make a new post by clicking the "Create New Post" buttom.
 After zooming in the picture, click on the "Delete Image" button on the top left corner and then confirm to delete the post.
 
 <p align="left">
-	<img src='./readme.assets/image-20220807012029330.png' width=80%>
+	<img src='./readme.assets/image-20220807012029330.png' width=50%>
 </p>
 
 
@@ -94,12 +94,12 @@ Search the posts by text keyword or users.
 ## Architecture
 
 <p>
-	<img src='./readme.assets/image-20220807020754880.png' width=70%>
+	<img src='./readme.assets/image-20220807020754880.png' width=50%>
 </p>
 
 - Backend
 
-The backend service is deployed on Google App Engine. App Engine is a fully managed, PaaS for developing and hosting web applications at scale. With simple config file, the code can be deployed with scalability which is managed by Google Cloud. 
+The backend service is deployed on Google App Engine. App Engine is a fully managed, PaaS for developing and hosting web applications at scale. With simple config file, the service can be deployed with scalability which is managed by Google Cloud. 
 
 - Database
 
@@ -108,3 +108,4 @@ Elasticsearch is used as the database. Image/video files are stored in Google Cl
 ## Contact
 
 Yang Yu @[Yang Yu](https://github.com/peteryoungy)
+
