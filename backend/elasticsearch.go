@@ -7,6 +7,7 @@ import (
     "around/constants"
 
     "github.com/olivere/elastic/v7"
+	"around/util"
 )
 
 var (
@@ -17,12 +18,12 @@ type ElasticsearchBackend struct {
     client *elastic.Client
 }
 
-func InitElasticsearchBackend(){
+func InitElasticsearchBackend(config *util.ElasticsearchInfo){
 
     // note: like session factory, build a connection
 	client, err := elastic.NewClient(
-		elastic.SetURL(constants.ES_URL),
-		elastic.SetBasicAuth(constants.ES_USERNAME, constants.ES_PASSWORD))
+		elastic.SetURL(config.Address),
+		elastic.SetBasicAuth(config.Username, config.Password))
 	if err != nil{
 		panic(err)
 	}
