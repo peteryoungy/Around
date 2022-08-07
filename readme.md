@@ -108,4 +108,3 @@ Elasticsearch is used as the database. Image/video files are stored in Google Cl
 ## Contact
 
 Yang Yu @[Yang Yu](https://github.com/peteryoungy)
-

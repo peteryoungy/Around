@@ -92,7 +92,7 @@ func (backend *ElasticsearchBackend) ReadFromES(query elastic.Query, index strin
     searchResult, err := backend.client.Search().
             Index(index).        // search in index "twitter"
             Query(query).        // specify the query
-			From(0).Size(10).     // func: set default search entries to 20
+			From(0).Size(20).     // func: set default search entries to 20
             Pretty(true).            // pretty print request and response JSON
             Do(context.Background())  // execute
 
