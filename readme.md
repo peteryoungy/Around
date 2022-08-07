@@ -66,7 +66,7 @@ All posts are sorted by "Images" and "Videos". Users can browser others posts in
 Users would like to make a new post by clicking the "Create New Post" buttom.
 
 <p align='left'>
-	<img src='./readme.assets/image-20220807011830693.png' width=60%>    
+	<img src='./readme.assets/image-20220807011830693.png' width=50%>    
 </p>
 
 
